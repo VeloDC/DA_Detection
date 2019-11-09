@@ -56,7 +56,7 @@ for year in ['2007', '2012']:
       name = 'voc_cyclewater_{}_{}'.format(year, split)
       __sets[name] = (lambda split=split, year=year: pascal_voc_cyclewater(split, year))
 for year in ['2007']:
-  for split in ['trainval', 'test']:
+  for split in ['train', 'trainval', 'test']:
     name = 'clipart_{}'.format(split)
     __sets[name] = (lambda split=split : clipart(split,year))
 for year in ['2007']:
