@@ -165,13 +165,18 @@ def set_dataset_args(args, test=False):
         #     args.imdbval_name = "cityscape_kitti_trainval"
         #     args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
         #                      '30']
-        if args.dataset_t == "water":
-            args.imdb_name_target = "water_train"
-            args.imdbval_name_target = "water_train"
+        if "watercolor" in args.dataset_t:
+            args.imdb_name_target = "{}_train".format(args.dataset_t)
+            args.imdbval_name_target = "watercolor_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '20']
-        elif args.dataset_t == "clipart":
-            args.imdb_name_target = "clipart_train"
+        if "comic" in args.dataset_t: 
+            args.imdb_name_target = "{}_train".format(args.dataset_t)
+            args.imdbval_name_target = "comic_test"
+            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                             '20']
+        elif "clipart" in args.dataset_t:
+            args.imdb_name_target = "{}_train".format(args.dataset_t)
             args.imdbval_name_target = "clipart_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '20']
