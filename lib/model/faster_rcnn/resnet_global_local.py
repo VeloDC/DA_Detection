@@ -312,8 +312,8 @@ class resnet(_fasterRCNN):
 
     resnet = resnet101()
     if self.layers == 50:
-      resnet = resnet50()
-    if self.pretrained == True:
+      resnet = resnet50(self.pretrained)
+    if self.pretrained == True and self.layers == 101:
       print("Loading pretrained weights from %s" %(self.model_path))
       state_dict = torch.load(self.model_path)
       resnet.load_state_dict({k:v for k,v in state_dict.items() if k in resnet.state_dict()})

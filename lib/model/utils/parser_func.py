@@ -171,7 +171,7 @@ def set_dataset_args(args, test=False):
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '20']
         elif args.dataset_t == "clipart":
-            args.imdb_name_target = "clipart_trainval"
+            args.imdb_name_target = "clipart_train"
             args.imdbval_name_target = "clipart_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '20']

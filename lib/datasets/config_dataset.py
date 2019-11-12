@@ -20,7 +20,7 @@ __D.PASCALCLIP = ""
 __D.PASCALWATER = "/VOCdevkit"
 
 #For these datasets, the directories under the path will be Annotations  ImageSets  JPEGImages."
-__D.CLIPART = "/clipart"
+__D.CLIPART = "./datasets/clipart"
 __D.WATER = "/watercolor"
 __D.SIM10K = "Sim10k/VOC2012"
 __D.CITYSCAPE_CAR = "/VOC2007"

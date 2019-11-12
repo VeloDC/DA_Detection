@@ -117,11 +117,17 @@ class imdb(object):
 
     for i in range(num_images):
       boxes = self.roidb[i]['boxes'].copy()
+      boxes = boxes.astype(np.int32)
       oldx1 = boxes[:, 0].copy()
       oldx2 = boxes[:, 2].copy()
-      boxes[:, 0] = widths[i] - oldx2 - 1
-      boxes[:, 2] = widths[i] - oldx1 - 1
+      
+      #boxes[:, 0] = widths[i] - oldx2 - 1
+      #boxes[:, 2] = widths[i] - oldx1 - 1
 
+      boxes[:, 0] = np.maximum(widths[i] - oldx2,1) - 1
+      boxes[:, 2] = np.maximum(widths[i] - oldx1,1) - 1
+      
+      boxes = boxes.astype(np.uint16)
       try:
         assert (boxes[:, 2] >= boxes[:, 0]).all()
       except:
