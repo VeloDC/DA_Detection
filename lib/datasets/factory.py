@@ -19,6 +19,7 @@ from datasets.sim10k import sim10k
 from datasets.water import water
 from datasets.clipart import clipart
 from datasets.comic import comic
+from datasets.amds import amds
 from datasets.sim10k_cycle import sim10k_cycle
 from datasets.cityscape import cityscape
 from datasets.cityscape_car import cityscape_car
@@ -73,6 +74,10 @@ for split in ['train', 'test']:
     dataset_name = 'watercolor{}'.format(data_percentage)
     name = '{}_{}'.format(dataset_name, split)
     __sets[name] = (lambda split=split, dataset_name=dataset_name: water(split,devkit_path=os.path.join('datasets', dataset_name)))
+for split in ['train', 'test']:
+  dataset_name = 'amds'
+  name = '{}_{}'.format(dataset_name, split)
+  __sets[name] = (lambda split=split, dataset_name=dataset_name: amds(split,devkit_path=os.path.join('datasets', dataset_name)))
 def get_imdb(name):
   """Get an imdb (image database) by name."""
   if name not in __sets:

@@ -180,6 +180,11 @@ def set_dataset_args(args, test=False):
             args.imdbval_name_target = "clipart_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '20']
+        elif "amds" in args.dataset_t:
+            args.imdb_name_target = "{}_train".format(args.dataset_t)
+            args.imdbval_name_target = "amds_test"
+            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                    '20']
         elif args.dataset_t == "cityscape":
             args.imdb_name_target = "cityscape_trainval"
             args.imdbval_name_target = "cityscape_trainval"
