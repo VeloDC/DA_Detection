@@ -237,10 +237,10 @@ class pascal_voc(imdb):
         for ix, obj in enumerate(objs):
             bbox = obj.find('bndbox')
             # Make pixel indexes 0-based
-            x1 = float(bbox.find('xmin').text) - 1
-            y1 = float(bbox.find('ymin').text) - 1
-            x2 = float(bbox.find('xmax').text) - 1
-            y2 = float(bbox.find('ymax').text) - 1
+            x1 = int(bbox.find('xmin').text) - 1
+            y1 = int(bbox.find('ymin').text) - 1
+            x2 = int(bbox.find('xmax').text) - 1
+            y2 = int(bbox.find('ymax').text) - 1
 
             diffc = obj.find('difficult')
             difficult = 0 if diffc == None else int(diffc.text)
@@ -248,7 +248,13 @@ class pascal_voc(imdb):
 
             cls = self._class_to_ind[obj.find('name').text.lower().strip()]
             boxes[ix, :] = [x1, y1, x2, y2]
-            seg_map[x1:x2,y1:y2] = cls
+            try:
+                seg_map[x1:x2,y1:y2] = cls
+            except TypeError:
+                print(x1)
+                print(x2)
+                print(y1)
+                print(y2)
             gt_classes[ix] = cls
             overlaps[ix, cls] = 1.0
             seg_areas[ix] = (x2 - x1 + 1) * (y2 - y1 + 1)
