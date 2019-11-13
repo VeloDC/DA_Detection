@@ -73,8 +73,8 @@ if __name__ == '__main__':
     fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic,lc=args.lc,gc=args.gc)
   elif args.net == 'res101':
     fasterRCNN = resnet(imdb.classes, 101, pretrained=True, class_agnostic=args.class_agnostic,lc=args.lc,gc=args.gc)
-  #elif args.net == 'res50':
-  #  fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic,context=args.context)
+  elif args.net == 'res50':
+    fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic,lc=args.lc,gc=args.gc)
 
   else:
     print("network is not defined")

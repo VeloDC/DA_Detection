@@ -237,9 +237,9 @@ def set_dataset_args(args, test=False):
             args.imdbval_name = "water_test"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                 '20']
-        elif args.dataset == "clipart":
-            args.imdb_name = "clipart_trainval"
-            args.imdbval_name = "clipart_trainval"
+        elif "clipart" in args.dataset:
+            args.imdb_name = args.dataset + "_train"
+            args.imdbval_name = "clipart_test"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '20']
         elif args.dataset == "cityscape_car":
