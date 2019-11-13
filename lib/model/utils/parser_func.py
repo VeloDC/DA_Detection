@@ -233,13 +233,14 @@ def set_dataset_args(args, test=False):
             args.imdbval_name = "cityscape_kitti_val"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
         elif args.dataset == "water":
-            args.imdb_name = "water_test"
-            args.imdbval_name = "water_test"
+            args.imdb_name = "watercolor_train"
+            args.imdbval_name = "watercolor_test"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                 '20']
-        elif "clipart" in args.dataset:
+        elif "clipart" in args.dataset or "comic" in args.dataset or "watercolor" in args.dataset or "amds" in args.dataset:
+            ds_name = args.dataset.split("_")[0]
             args.imdb_name = args.dataset + "_train"
-            args.imdbval_name = "clipart_test"
+            args.imdbval_name = ds_name + "_test"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '20']
         elif args.dataset == "cityscape_car":
