@@ -39,9 +39,9 @@ class _fasterRCNN(nn.Module):
 
     def forward(self, im_data, im_info, gt_boxes, num_boxes,target=False,eta=1.0):
 
-        #im_data = torch.stack((im_data[0,2],im_data[0,1],im_data[0,0])).unsqueeze(dim=0) # color channel swap 
-        #im_data = im_data / 256    # bring it back to pytorch range
-        #im_data = im_data / 0.226  # divide by imagenet std (speed approximation)
+        im_data = torch.stack((im_data[0,2],im_data[0,1],im_data[0,0])).unsqueeze(dim=0) # color channel swap 
+        im_data = im_data / 256    # bring it back to pytorch range
+        im_data = im_data / 0.226  # divide by imagenet std (speed approximation)
         #print(im_data)
         
         batch_size = im_data.size(0)
