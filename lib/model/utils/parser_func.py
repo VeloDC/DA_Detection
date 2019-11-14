@@ -224,9 +224,9 @@ def set_dataset_args(args, test=False):
             args.imdb_name = "cityscape_val"
             args.imdbval_name = "cityscape_val"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-        elif args.dataset == "foggy_cityscape":
-            args.imdb_name = "foggy_cityscape_test"
-            args.imdbval_name = "foggy_cityscape_test"
+        elif args.dataset == "foggy_cityscapes":
+            args.imdb_name = "foggy_cityscapes_test"
+            args.imdbval_name = "foggy_cityscapes_test"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
         elif args.dataset == "cityscape_kitti":
             args.imdb_name = "cityscape_kitti_val"
