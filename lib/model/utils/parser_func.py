@@ -21,7 +21,7 @@ def parse_args():
                         default=1, type=int)
     parser.add_argument('--epochs', dest='max_epochs',
                         help='number of epochs to train',
-                        default=20, type=int)
+                        default=7, type=int)
     parser.add_argument('--gamma', dest='gamma',
                         help='value of gamma',
                         default=5, type=float)
