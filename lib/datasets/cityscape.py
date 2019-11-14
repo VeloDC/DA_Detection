@@ -44,7 +44,7 @@ class cityscape(imdb):
         imdb.__init__(self, 'cityscape_' + image_set)
         self._year = 2007
         self._image_set = image_set
-        self._devkit_path = cfg_d.CITYSCAPE
+        self._devkit_path = devkit_path
         self._data_path = os.path.join(self._devkit_path)
         self._classes = ('__background__',  # always index 0
                          'bus', 'bicycle', 'car', 'motorcycle', 'person', 'rider', 'train', 'truck')
@@ -118,18 +118,19 @@ class cityscape(imdb):
 
         This function loads/saves from/to a cache file to speed up future calls.
         """
-        cache_file = os.path.join(self.cache_path, self.name + '_gt_roidb.pkl')
-        if os.path.exists(cache_file):
-            with open(cache_file, 'rb') as fid:
-                roidb = pickle.load(fid)
-            print('{} gt roidb loaded from {}'.format(self.name, cache_file))
-            return roidb
+        print("Skipping caching")
+        #cache_file = os.path.join(self.cache_path, self.name + '_gt_roidb.pkl')
+        #if os.path.exists(cache_file):
+        #    with open(cache_file, 'rb') as fid:
+        #        roidb = pickle.load(fid)
+        #    print('{} gt roidb loaded from {}'.format(self.name, cache_file))
+        #    return roidb
 
         gt_roidb = [self._load_pascal_annotation(index)
                     for index in self.image_index]
-        with open(cache_file, 'wb') as fid:
-            pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
-        print('wrote gt roidb to {}'.format(cache_file))
+        #with open(cache_file, 'wb') as fid:
+        #    pickle.dump(gt_roidb, fid, pickle.HIGHEST_PROTOCOL)
+        #print('wrote gt roidb to {}'.format(cache_file))
 
         return gt_roidb
 

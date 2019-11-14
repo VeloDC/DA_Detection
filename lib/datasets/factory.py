@@ -30,13 +30,14 @@ import os
 
 for split in ['train', 'trainval','val','test']:
   name = 'cityscape_{}'.format(split)
-  __sets[name] = (lambda split=split : cityscape(split))
+  __sets[name] = (lambda split=split : cityscape("cityscapes_" + split, devkit_path="datasets/voc_cityscapes"))
 for split in ['train', 'trainval','val','test']:
   name = 'cityscape_car_{}'.format(split)
   __sets[name] = (lambda split=split : cityscape_car(split))
 for split in ['train', 'trainval','test']:
-  name = 'foggy_cityscape_{}'.format(split)
-  __sets[name] = (lambda split=split : foggy_cityscape(split))
+  for data_percentage in ['', '_1_00', '_1_01', '_1_02']:
+    name = 'foggy_cityscapes{}_{}'.format(data_percentage, split)
+    __sets[name] = (lambda split=split, data_percentage=data_percentage : foggy_cityscape("foggy_" + split, devkit_path="datasets/voc_cityscapes{}".format(data_percentage)))
 for split in ['train','val']:
   name = 'sim10k_{}'.format(split)
   __sets[name] = (lambda split=split : sim10k(split))

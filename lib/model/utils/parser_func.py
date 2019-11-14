@@ -144,9 +144,9 @@ def set_dataset_args(args, test=False):
             args.imdb_name = "vg_150-50-50_minitrain"
             args.imdbval_name = "vg_150-50-50_minival"
             args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
-        elif args.dataset == "cityscape":
-            args.imdb_name = "cityscape_trainval"
-            args.imdbval_name = "cityscape_trainval"
+        elif args.dataset == "cityscape" or args.dataset == "cityscapes":
+            args.imdb_name = "cityscape_train"
+            args.imdbval_name = "cityscape_val"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '30']
         elif args.dataset == "sim10k":
@@ -185,7 +185,7 @@ def set_dataset_args(args, test=False):
             args.imdbval_name_target = "amds_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '20']
-        elif args.dataset_t == "cityscape":
+        elif args.dataset_t == "cityscape" or args.dataset_t == "cityscapes":
             args.imdb_name_target = "cityscape_trainval"
             args.imdbval_name_target = "cityscape_trainval"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
@@ -201,9 +201,9 @@ def set_dataset_args(args, test=False):
         #     args.imdbval_name_target = "kitti_trainval"
         #     args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
         #                             '20']
-        elif args.dataset_t == "foggy_cityscape":
-            args.imdb_name_target = "foggy_cityscape_trainval"
-            args.imdbval_name_target = "foggy_cityscape_trainval"
+        elif "foggy_cityscapes" in args.dataset_t:
+            args.imdb_name_target = args.dataset_t + "_train"
+            args.imdbval_name_target = args.dataset_t + "_val"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '30']
     else:
