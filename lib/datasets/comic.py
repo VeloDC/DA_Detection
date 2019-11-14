@@ -53,8 +53,8 @@ class comic(imdb):
                          'cow', 'diningtable', 'dog', 'horse',
                          'motorbike', 'person', 'pottedplant',
                          'sheep', 'sofa', 'train', 'tvmonitor')
-        self._classes = ('__background__',  # always index 0
-                        'bicycle','bird', 'car', 'cat', 'dog', 'person')
+        #self._classes = ('__background__',  # always index 0
+        #                'bicycle','bird', 'car', 'cat', 'dog', 'person')
         self._class_to_ind = dict(zip(self.classes, xrange(self.num_classes)))
         self._image_ext = '.jpg'
         self._image_index = self._load_image_set_index()
@@ -309,7 +309,7 @@ class comic(imdb):
     def _get_voc_results_file_template(self):
         # VOCdevkit/results/VOC2007/Main/<comp_id>_det_test_aeroplane.txt
         filename = self._get_comp_id() + '_det_' + self._image_set + '_{:s}.txt'
-        filedir = os.path.join(self._devkit_path, 'results', 'VOC' + self._year, 'Main')
+        filedir = os.path.join(self._devkit_path, 'results', 'VOC' + str(self._year), 'Main')
         #print(filedir)
         if not os.path.exists(filedir):
             os.makedirs(filedir)
@@ -345,7 +345,7 @@ class comic(imdb):
             'ImageSets',
             'Main',
             self._image_set + '.txt')
-        cachedir = os.path.join(self._devkit_path, 'annotations_cache')
+        cachedir = os.path.join(output_dir, 'annotations_cache')
         aps = []
         # The PASCAL VOC metric changed in 2010
         use_07_metric = True if int(self._year) < 2010 else False
