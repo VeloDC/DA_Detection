@@ -145,7 +145,7 @@ def set_dataset_args(args, test=False):
             args.imdbval_name = "vg_150-50-50_minival"
             args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
         elif args.dataset == "cityscape" or args.dataset == "cityscapes":
-            args.imdb_name = "cityscape_train"
+            args.imdb_name = "cityscapes_detection_train"
             args.imdbval_name = "cityscape_val"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '30']
@@ -158,6 +158,11 @@ def set_dataset_args(args, test=False):
             args.imdb_name = "sim10k_cycle_train"
             args.imdbval_name = "sim10k_cycle_train"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+        elif args.dataset == "kitti":
+            args.imdb_name = "kitti_trainval"
+            args.imdbval_name = "kitti_trainval"
+            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                             '30']
 
         ## cityscape dataset for only car classes.
         # elif args.dataset == "cityscape_kitti":
@@ -185,11 +190,6 @@ def set_dataset_args(args, test=False):
             args.imdbval_name_target = "amds_test"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '20']
-        elif args.dataset_t == "cityscape" or args.dataset_t == "cityscapes":
-            args.imdb_name_target = "cityscape_trainval"
-            args.imdbval_name_target = "cityscape_trainval"
-            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
-                                    '30']
         ## cityscape dataset for only car classes.
         elif args.dataset_t == "cityscape_car":
             args.imdb_name_target = "cityscape_car_trainval"
@@ -206,6 +206,13 @@ def set_dataset_args(args, test=False):
             args.imdbval_name_target = args.dataset_t + "_val"
             args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                                     '30']
+        elif "kitti" in args.dataset_t:
+            args.imdb_name_target = args.dataset_t + "_trainval"
+            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
+        elif "cityscape" in args.dataset_t:
+            args.imdb_name_target = args.dataset_t + "_detection_train"
+            args.imdbval_name_target = args.dataset_t + "_detection_train"
+            args.set_cfgs_target = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
     else:
         if args.dataset == "pascal_voc":
             args.imdb_name = "voc_2007_trainval"

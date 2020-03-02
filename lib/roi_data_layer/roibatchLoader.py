@@ -50,8 +50,9 @@ class roibatchLoader(data.Dataset):
         else:
             # for ratio cross 1, we make it to be 1.
             target_ratio = 1
-
-        self.ratio_list_batch[left_idx:(right_idx+1)] = target_ratio
+        
+        self.ratio_list_batch[left_idx:(right_idx+1)] = torch.tensor(target_ratio.astype(np.float64)) # trainset ratio list ,each batch is same number
+        #self.ratio_list_batch[left_idx:(right_idx+1)] = target_ratio
 
 
   def __getitem__(self, index):

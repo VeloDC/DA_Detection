@@ -73,8 +73,7 @@ if __name__ == '__main__':
 
     dataloader_s = torch.utils.data.DataLoader(dataset_s, batch_size=args.batch_size,
                                                sampler=sampler_batch, num_workers=args.num_workers)
-    dataset_t = roibatchLoader(roidb_t, ratio_list_t, ratio_index_t, args.batch_size, \
-                               imdb.num_classes, training=True)
+    dataset_t = roibatchLoader(roidb_t, ratio_list_t, ratio_index_t, args.batch_size, imdb.num_classes, training=True)
     dataloader_t = torch.utils.data.DataLoader(dataset_t, batch_size=args.batch_size,
                                                sampler=sampler_batch_t, num_workers=args.num_workers)
     # initilize the tensor holder here.

@@ -24,20 +24,29 @@ from datasets.sim10k_cycle import sim10k_cycle
 from datasets.cityscape import cityscape
 from datasets.cityscape_car import cityscape_car
 from datasets.foggy_cityscape import foggy_cityscape
+from datasets.kitti import kitti
 
 import numpy as np
 import os
 
+for split in ['train', 'trainval','val','test','detection_train']:
+  for data_percentage in ['', '_1_00', '_1_01', '_1_02', '_10_samples', '_10_samples_2', '_10_samples_3']:
+    name = 'cityscapes{}_{}'.format(data_percentage, split)
+    __sets[name] = (lambda split=split, data_percentage=data_percentage : cityscape("cityscapes_" + split, devkit_path="datasets/voc_cityscapes{}".format(data_percentage)))
 for split in ['train', 'trainval','val','test']:
-  name = 'cityscape_{}'.format(split)
-  __sets[name] = (lambda split=split : cityscape("cityscapes_" + split, devkit_path="datasets/voc_cityscapes"))
+  name = 'kitti_{}'.format(split)
+  __sets[name] = (lambda split=split : kitti("kitti_" + split, devkit_path="datasets/voc_kitti"))
 for split in ['train', 'trainval','val','test']:
   name = 'cityscape_car_{}'.format(split)
   __sets[name] = (lambda split=split : cityscape_car(split))
 for split in ['train', 'trainval','test']:
-  for data_percentage in ['', '_1_00', '_1_01', '_1_02']:
+  for data_percentage in ['', '_1_00', '_1_01', '_1_02', '_10_samples', '_10_samples_2', '_10_samples_3']:
     name = 'foggy_cityscapes{}_{}'.format(data_percentage, split)
-    __sets[name] = (lambda split=split, data_percentage=data_percentage : foggy_cityscape("foggy_" + split, devkit_path="datasets/voc_cityscapes{}".format(data_percentage)))
+    __sets[name] = (lambda split=split, data_percentage=data_percentage : foggy_cityscape("foggy_" + split, devkit_path="datasets/voc_cityscapes2foggy{}".format(data_percentage)))
+for split in ['train', 'trainval','test']:
+  for data_percentage in ['', '_1_00', '_1_01', '_1_02', '_10_samples', '_10_samples_2', '_10_samples_3']:
+    name = 'kitti{}_{}'.format(data_percentage, split)
+    __sets[name] = (lambda split=split, data_percentage=data_percentage : kitti("kitti_" + split, devkit_path="datasets/voc_kitti{}".format(data_percentage)))
 for split in ['train','val']:
   name = 'sim10k_{}'.format(split)
   __sets[name] = (lambda split=split : sim10k(split))
